@@ -4,22 +4,30 @@ from django.db import models
 
 
 class Respondant(models.Model):
-    case_id = models.CharField(max_length=14)
-    weight = models.FloatField()
+    caseid = models.CharField(max_length=14)
+    peronlinenumber = models.IntegerField()
     age = models.IntegerField()
-    sex = models.CharField(max_length=1)
+    gender = models.CharField(max_length=1)
+    activity = models.ManyToMany()
 
 
 class Activities(models.Model):
-    case_id = models.ManyToMany(Respondant)
+    code = models.IntegerField()
+    weight = models.FloatField()
+    title = models.CharField(max_length=50)
+    minutesspend = models.IntegerField()
 
 
 class Household(models.Model):
-    pass
+    caseid = models.ForeignKey(Respondant)
+    personlinenumber = models.ForeignKey(Respondant)
+    location = models.IntegerField()
+    houseincome = models.IntegerField()
+    ownorrent = models.IntegerField()
+    numberinhouse = models.IntegerField()
+    highesteducation = models.IntegerField()
 
 
-class ActivityCode(models.Model):
-    code = models.IntegerField()
-    title = models.CharField(max_length=50)
-    average_minutes = models.IntegerField()
-    total_respondants = models.IntegerField()
+class ActivityId(models.Model):
+    activitycode = models.IntegerField()
+    activity = models.CharField(max_limit=50)
