@@ -8,7 +8,7 @@ class Respondant(models.Model):
     peronlinenumber = models.IntegerField()
     age = models.IntegerField()
     gender = models.CharField(max_length=1)
-    activity = models.ManyToMany()
+    activity = models.ManyToManyField()
 
 
 class Activities(models.Model):
