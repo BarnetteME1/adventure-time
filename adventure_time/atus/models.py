@@ -5,25 +5,31 @@ from django.db import models
 
 class Respondant(models.Model):
     caseid = models.CharField(max_length=14)
-    peronlinenumber = models.IntegerField()
-    age = models.IntegerField()
+    age = models.CharField(max_length=3)
     gender = models.CharField(max_length=1)
-    #activity = models.ManyToManyField(Activity)
+
+    def __str__(self):
+        return self.caseid
 
 
 class Activity(models.Model):
-    code = models.IntegerField()
+    caseid = models.ForeignKey(Respondant)
+    activity = models.CharField(max_length=82)
     weight = models.FloatField()
-    activity = models.CharField(max_length=50)
-    title = models.CharField(max_length=50)
     minutesspend = models.IntegerField()
+
+    def __str__(self):
+        return self.activity
 
 
 class Household(models.Model):
-    #caseid = models.ForeignKey(Respondant)
-    #personlinenumber = models.ForeignKey(Respondant)
+    caseid = models.ForeignKey(Respondant)
     location = models.IntegerField()
     houseincome = models.IntegerField()
     ownorrent = models.IntegerField()
     numberinhouse = models.IntegerField()
     highesteducation = models.IntegerField()
+
+    def __str__(self):
+        return str(self.caseid)
+

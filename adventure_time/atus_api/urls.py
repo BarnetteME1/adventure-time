@@ -20,5 +20,6 @@ from atus.views import index_view
 
 urlpatterns = [
     url(r'^$', index_view, name='index'),
+    
     url(r'^admin/', include(admin.site.urls)),
 ]

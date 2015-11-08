@@ -1,0 +1,10 @@
+
+
+def import_activity_name(apps, schema_editor):
+    one_to_one = pd.read_csv('~/iron_yard_hw/adventure-time/adventure_time/atus_data/activity.csv')
+    one_to_one = one_to_one[['activity_code', 'name']]
+    OneToOne = apps.get_model('atus', 'ActivityName')
+    for index, row in one_to_one.iterrows:
+        activityid = row.activity_code
+        activityname = row.name
+        OneToOne.objects.create(activityid=activityid, activityname=activityname)

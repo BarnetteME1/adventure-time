@@ -13,18 +13,16 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Activity',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
-                ('code', models.IntegerField()),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
+                ('activity', models.CharField(max_length=82)),
                 ('weight', models.FloatField()),
-                ('activity', models.CharField(max_length=50)),
-                ('title', models.CharField(max_length=50)),
                 ('minutesspend', models.IntegerField()),
             ],
         ),
         migrations.CreateModel(
             name='Household',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('location', models.IntegerField()),
                 ('houseincome', models.IntegerField()),
                 ('ownorrent', models.IntegerField()),
@@ -35,11 +33,20 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Respondant',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('caseid', models.CharField(max_length=14)),
-                ('peronlinenumber', models.IntegerField()),
-                ('age', models.IntegerField()),
+                ('age', models.CharField(max_length=3)),
                 ('gender', models.CharField(max_length=1)),
             ],
+        ),
+        migrations.AddField(
+            model_name='household',
+            name='caseid',
+            field=models.ForeignKey(to='atus.Respondant'),
+        ),
+        migrations.AddField(
+            model_name='activity',
+            name='caseid',
+            field=models.ForeignKey(to='atus.Respondant'),
         ),
     ]
