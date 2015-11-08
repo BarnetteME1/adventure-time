@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from rest_framework import views
+from rest_framework.authtoken import views
 from atus.views import index_view
 
 urlpatterns = [
     url(r'^$', index_view, name='index'),
+    url(r'^api/', include('atus_api.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]

@@ -1,25 +1,10 @@
-"""adventure_time URL Configuration
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.8/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
-Including another URLconf
-    1. Add an import:  from blog import urls as blog_urls
-    2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
-"""
 from django.conf.urls import include, url
-from django.contrib import admin
-from rest_framework import views
-from atus.views import index_view
+from atus_api.views import RespondantView, HouseholdDetail, ActivityDetail, RespondantDetail
 
 urlpatterns = [
-    url(r'^$', index_view, name='index'),
-    
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', RespondantView.as_view(), name='respondant_api'),
+    url(r'^(?P<pk>\d+)/$', RespondantDetail.as_view(), name='respondant_detail_api'),
+    url(r'household/(?P<pk>\d+)/$', HouseholdDetail.as_view(), name='household_api'),
+    url(r'activity/(?P<pk>\d+)/$', ActivityDetail.as_view(), name='activity_api')
 ]
