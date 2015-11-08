@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Activity',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
+                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
                 ('code', models.IntegerField()),
                 ('weight', models.FloatField()),
                 ('activity', models.CharField(max_length=50)),
@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Household',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
+                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
                 ('location', models.IntegerField()),
                 ('houseincome', models.IntegerField()),
                 ('ownorrent', models.IntegerField()),
@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Respondant',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
+                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
                 ('caseid', models.CharField(max_length=14)),
                 ('peronlinenumber', models.IntegerField()),
                 ('age', models.IntegerField()),
