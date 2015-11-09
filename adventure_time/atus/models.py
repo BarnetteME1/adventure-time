@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+from django_filters import MethodFilter
+import django_filters
 
 
 class Respondant(models.Model):
@@ -14,6 +16,7 @@ class Respondant(models.Model):
 
 class Activity(models.Model):
     caseid = models.ForeignKey(Respondant)
+    code = models.CharField(max_length=7)
     activity = models.CharField(max_length=82)
     weight = models.FloatField()
     minutesspend = models.IntegerField()
@@ -29,7 +32,3 @@ class Household(models.Model):
     ownorrent = models.IntegerField()
     numberinhouse = models.IntegerField()
     highesteducation = models.IntegerField()
-
-    def __str__(self):
-        return str(self.caseid)
-

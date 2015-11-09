@@ -6,15 +6,17 @@ from atus.models import Respondant
 
 def import_activity(apps, schema_editor):
     activity = pd.read_csv('~/my_projects/activity.csv')
-    activity = activity[['TUCASEID', 'TUFINLWGT', 'variable', 'value']]
+    activity = activity[['TUCASEID', 'TUFINLWGT', 'variable', 'value', 'code']]
     Respondant = apps.get_model('atus', 'Respondant')
     Activity = apps.get_model('atus', 'Activity')
     for index, row in activity.iterrows():
         caseid = row.TUCASEID
         weight = row.TUFINLWGT
-        code = row.variable
+        code = row.code
+        activity = row.variable
         time = row.value
-        Activity.objects.create(caseid=Respondant.objects.get(caseid=caseid), weight=weight, activity=code, minutesspend=time)
+        Activity.objects.create(caseid=Respondant.objects.get(caseid=caseid),
+                                weight=weight, activity=activity, minutesspend=time, code=code)
 
 
 def import_respondant(apps, schema_editor):
