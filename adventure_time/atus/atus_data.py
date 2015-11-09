@@ -15,7 +15,7 @@ def import_activity(apps, schema_editor):
         code = row.code
         activity = row.variable
         time = row.value
-        Activity.objects.create(caseid=Respondant.objects.get(caseid=caseid),
+        Activity.objects.create(caseid=Respondant.objects.get(id=caseid),
                                 weight=weight, activity=activity, minutesspend=time, code=code)
 
 
@@ -27,7 +27,7 @@ def import_respondant(apps, schema_editor):
         caseid = row.TUCASEID
         age = row.TEAGE
         gender = row.TESEX
-        Respondant.objects.create(caseid=caseid, age=age, gender=gender)
+        Respondant.objects.create(id=caseid, age=age, gender=gender)
 
 
 def import_household(apps, schema_editor):
@@ -42,4 +42,4 @@ def import_household(apps, schema_editor):
         ownorrent = row.HETENURE
         numberinhouse = row.HRNUMHOU
         highesteducation = row.PEEDUCA
-        Household.objects.create(caseid=Respondant.objects.get(caseid=caseid), location=location, houseincome=houseincome, ownorrent=ownorrent, numberinhouse=numberinhouse, highesteducation=highesteducation)
+        Household.objects.create(caseid=Respondant.objects.get(id=caseid), location=location, houseincome=houseincome, ownorrent=ownorrent, numberinhouse=numberinhouse, highesteducation=highesteducation)

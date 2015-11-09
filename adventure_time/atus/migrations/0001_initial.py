@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Activity',
             fields=[
-                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
+                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
                 ('code', models.CharField(max_length=7)),
                 ('activity', models.CharField(max_length=82)),
                 ('weight', models.FloatField()),
@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Household',
             fields=[
-                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
+                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
                 ('location', models.IntegerField()),
                 ('houseincome', models.IntegerField()),
                 ('ownorrent', models.IntegerField()),
@@ -34,8 +34,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Respondant',
             fields=[
-                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
-                ('caseid', models.CharField(max_length=14)),
+                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
                 ('age', models.CharField(max_length=3)),
                 ('gender', models.CharField(max_length=1)),
             ],

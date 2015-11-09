@@ -6,7 +6,6 @@ import django_filters
 
 
 class Respondant(models.Model):
-    caseid = models.CharField(max_length=14)
     age = models.CharField(max_length=3)
     gender = models.CharField(max_length=1)
 

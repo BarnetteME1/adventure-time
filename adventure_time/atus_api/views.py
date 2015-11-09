@@ -55,7 +55,7 @@ class HouseholdTwoView(ListAPIView):
 
     def get_queryset(self):
         caseid = self.kwargs['pk']
-        return Household.objects.filter(caseid_id=caseid)
+        return Household.objects.filter(caseid=caseid)
 
 class HouseholdDetail(RetrieveAPIView):
     serializer_class = HouseholdSerializer
